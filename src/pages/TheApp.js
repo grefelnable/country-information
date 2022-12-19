@@ -3,38 +3,53 @@ import axios from "axios";
 import Countries from "../components/Countries";
 
 const TheApp = () => {
-  const [countries, setCountries] = useState();
-  const [search, setSearch] = useState();
+  const [countries, setCountries] = useState([]);
+  const [query, setQuery] = useState();
+  const [error, setError] = useState(null);
+  // set loading screen
+  const [isLoaded, setIsLoaded] = useState(false);
 
   // fetch countries from https://restcountries.com/v3.1/all
   const url = "https://restcountries.com/v3.1/all";
   useEffect(() => {
     console.log("Effect");
-    axios.get(url).then((response) => {
-      console.log("Promise Fulfilled");
-      setCountries(response.data);
-    });
+    axios
+      .get(url)
+      .then((response) => {
+        console.log("Promise Fulfilled");
+        setIsLoaded(true);
+        setCountries(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsLoaded(true);
+        setError(error);
+      });
   }, []);
   console.log("render", countries.length, "countries");
   // handle country input
-  const handleSearch = (event) => {
+  const handleQuery = (event) => {
     console.log(event.target.value);
     let lowerCase = event.target.value.toLowerCase();
-    setSearch(lowerCase);
+    setQuery(lowerCase);
   };
+
   return (
     <div>
-      <h2>Search Countries</h2>
       {/* country user input */}
       <input
         type="text"
-        placeholder="Type here"
-        className="input input-bordered input-secondary w-full max-w-xs mt-8"
-        value={search}
-        onChange={handleSearch}
+        placeholder="Search for a country..."
+        className="input input-bordered input-secondary w-full max-w-xs mt-8 mb-8"
+        onChange={handleQuery}
       />
       {/* results */}
-      <Countries />
+      <Countries
+        query={query}
+        countries={countries}
+        error={error}
+        isLoaded={isLoaded}
+      />
     </div>
   );
 };

@@ -8,7 +8,7 @@ const SharedLayout = () => {
       <nav className="navbar bg-base-100">
         <div className="flex-1">
           <span className="btn btn-ghost normal-case text-xl">
-            Country Informations
+            Country Information
           </span>
         </div>
         {/* display on medium to large screen */}

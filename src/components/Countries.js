@@ -13,7 +13,7 @@ const Countries = ({ query, countries, isLoaded, error }) => {
     } else return country.name.common.toLowerCase().includes(query);
   });
   if (error) {
-    return <>{error.message}</>;
+    return <p>{error.message}</p>;
   } else if (!isLoaded) {
     return (
       <section className="flex items-center justify-center w-screen h-screen">

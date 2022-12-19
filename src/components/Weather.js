@@ -47,10 +47,13 @@ const Weather = ({ capital }) => {
   } else
     return (
       <div>
-        <h3>Weather in {capital}</h3>
+        <h3>
+          Weather in{" "}
+          <span className="font-extrabold tracking-wider">{capital}</span>
+        </h3>
         <p>
-          Temperature: <span className="font-bold text-lg">{temperature}</span>{" "}
-          Celsius
+          Temperature: <span className="font-bold text-lg">{temperature} </span>
+          &deg; Celsius
         </p>
         <img
           src={`http://openweathermap.org/img/wn/${weather.icon}@2x.png`}

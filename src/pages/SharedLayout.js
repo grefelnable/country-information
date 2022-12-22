@@ -11,6 +11,8 @@ const SharedLayout = () => {
             Country Information
           </span>
         </div>
+        {/* dark mode  */}
+
         {/* display on medium to large screen */}
         <div className="hidden md:block flex-none">
           <ul className="menu menu-horizontal px-1">

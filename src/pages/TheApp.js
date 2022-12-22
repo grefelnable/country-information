@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { themeChange } from "theme-change";
 import axios from "axios";
 import Countries from "../components/Countries";
 
@@ -26,8 +25,6 @@ const TheApp = () => {
         setIsLoaded(true);
         setError(error);
       });
-    // theme change
-    themeChange(false);
   }, []);
 
   // handle country input

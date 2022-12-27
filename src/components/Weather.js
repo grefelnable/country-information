@@ -15,7 +15,7 @@ const Weather = ({ capital }) => {
   // api key
   const api_key = process.env.REACT_APP_API_KEY;
   // Open weather url
-  const url = `http://api.openweathermap.org/data/2.5/weather?appid=${api_key}&q=${capital}&units=metric`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?appid=${api_key}&q=${capital}&units=metric`;
   // fetch data from openweathermap
   useEffect(() => {
     console.log("Fetching weather data");
